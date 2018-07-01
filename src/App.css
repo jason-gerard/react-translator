@@ -1,0 +1,9 @@
+.title-bar h1 {
+	margin-top: 0;
+	padding: 20px 0;
+}
+
+/* Helper classes */
+.mb-0 {
+	margin-bottom: 0px;
+}

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import TranslatorInput from './components/TranslatorInput';
-import TranslatorOutput from './components/TranslatorOutput';
+import TranslatorInput from './components/TranslatorInput/TranslatorInput';
+import TranslatorOutput from './components/TranslatorOutput/TranslatorOutput';
 
 import { yandex_key } from './config';
 
@@ -35,8 +35,15 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<TranslatorInput translatePhraseData={this.translatePhrase} />
-				<TranslatorOutput phrase={this.state.translatedPhrase} />
+				<div className="grey darken-3 title-bar light-blue-text text-lighten-3 ">
+					<h1 className="center-align">React Translator</h1>
+				</div>
+				<div className="container">
+					<TranslatorInput
+						translatePhraseData={this.translatePhrase}
+					/>
+					<TranslatorOutput phrase={this.state.translatedPhrase} />
+				</div>
 			</div>
 		);
 	}

@@ -1,0 +1,32 @@
+.translator-text-area {
+	height: 8rem !important;
+	font-size: 20px !important;
+}
+
+.translator-text-area:focus,
+.select-dropdown:focus {
+	border-bottom: 1px solid #81d4fa !important;
+	box-shadow: 0 1px 0 0 #81d4fa !important;
+}
+
+.translate-btn {
+	margin-right: 12px;
+}
+
+.translate-options {
+	float: right !important;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.dropdown-content li a,
+.dropdown-content li span {
+	color: black;
+}
+
+@media only screen and (max-width: 992px) {
+	.translate-options {
+		float: left !important;
+		justify-content: flex-start;
+	}
+}
