@@ -4,8 +4,8 @@ class TranslatorOutput extends Component {
 	render() {
 		return (
 			<div className="TranslatorOutput">
-				<h1>Translated Word</h1>
-				<p>{this.props.word}</p>
+				<h1>Translated Phrase</h1>
+				<p>{this.props.phrase}</p>
 			</div>
 		);
 	}

@@ -4,26 +4,39 @@ import './App.css';
 import TranslatorInput from './components/TranslatorInput';
 import TranslatorOutput from './components/TranslatorOutput';
 
+import { yandex_key } from './config';
+
 class App extends Component {
 	constructor() {
 		super();
 
 		this.state = {
-			word: ''
+			translatedPhrase: ''
 		};
 
-		this.translateWord = this.translateWord.bind(this);
+		this.translatePhrase = this.translatePhrase.bind(this);
 	}
 
-	translateWord(word) {
-		this.setState({ word });
+	translatePhrase(phraseData) {
+		fetch(
+			'https://translate.yandex.net/api/v1.5/tr.json/translate?key=' +
+				yandex_key +
+				'&text=' +
+				phraseData.phrase +
+				'&lang=' +
+				phraseData.lang
+		)
+			.then(res => res.json())
+			.then(data => {
+				this.setState({ translatedPhrase: data.text[0] });
+			});
 	}
 
 	render() {
 		return (
 			<div className="App">
-				<TranslatorInput translateWord={this.translateWord} />
-				<TranslatorOutput word={this.state.word} />
+				<TranslatorInput translatePhraseData={this.translatePhrase} />
+				<TranslatorOutput phrase={this.state.translatedPhrase} />
 			</div>
 		);
 	}

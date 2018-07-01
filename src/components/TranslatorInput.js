@@ -5,31 +5,66 @@ class TranslatorInput extends Component {
 		super();
 
 		this.state = {
-			word: ''
+			initialPhrase: '',
+			languageFrom: 'en',
+			languageTo: 'en'
 		};
 
-		this.translateWord = this.translateWord.bind(this);
-		this.translateWordInput = this.translateWordInput.bind(this);
+		this.initialPhraseUpdate = this.initialPhraseUpdate.bind(this);
+		this.languageFromUpdate = this.languageFromUpdate.bind(this);
+		this.languageToUpdate = this.languageToUpdate.bind(this);
+		this.translateInitialPhrase = this.translateInitialPhrase.bind(this);
 	}
 
-	translateWordInput(e) {
-		this.setState({ word: e.target.value });
+	initialPhraseUpdate(e) {
+		this.setState({ initialPhrase: e.target.value });
 	}
 
-	translateWord(e) {
+	languageFromUpdate(e) {
+		this.setState({ languageFrom: e.target.value });
+	}
+
+	languageToUpdate(e) {
+		this.setState({ languageTo: e.target.value });
+	}
+
+	translateInitialPhrase(e) {
 		e.preventDefault();
-		this.props.translateWord(this.state.word);
+		this.props.translatePhraseData({
+			phrase: this.state.initialPhrase,
+			lang: `${this.state.languageFrom}-${this.state.languageTo}`
+		});
 	}
 
 	render() {
 		return (
 			<div className="Translator">
-				<form onSubmit={this.translateWord}>
+				<form onSubmit={this.translateInitialPhrase}>
 					<input
 						type="text"
-						value={this.state.word}
-						onChange={this.translateWordInput}
+						value={this.state.initialPhrase}
+						onChange={this.initialPhraseUpdate}
 					/>
+					<select
+						value={this.languageFrom}
+						onChange={this.languageFromUpdate}
+					>
+						<option value="en">English</option>
+						<option value="ru">Russian</option>
+						<option value="es">Spanish</option>
+						<option value="fr">French</option>
+						<option value="zh">Chinese</option>
+					</select>
+					<select
+						value={this.languageTo}
+						onChange={this.languageToUpdate}
+					>
+						<option value="en">English</option>
+						<option value="ru">Russian</option>
+						<option value="es">Spanish</option>
+						<option value="fr">French</option>
+						<option value="zh">Chinese</option>
+					</select>
 					<button>Translate</button>
 				</form>
 			</div>
