@@ -11,7 +11,7 @@ class App extends Component {
 		super();
 
 		this.state = {
-			translatedPhrase: ''
+			translations: []
 		};
 
 		this.translatePhrase = this.translatePhrase.bind(this);
@@ -28,7 +28,13 @@ class App extends Component {
 		)
 			.then(res => res.json())
 			.then(data => {
-				this.setState({ translatedPhrase: data.text[0] });
+				let translation = {
+					phrase: data.text[0],
+					lang: phraseData.lang
+				};
+				let newTranslations = this.state.translations.slice();
+				newTranslations.unshift(translation);
+				this.setState({ translations: newTranslations });
 			});
 	}
 
@@ -42,7 +48,20 @@ class App extends Component {
 					<TranslatorInput
 						translatePhraseData={this.translatePhrase}
 					/>
-					<TranslatorOutput phrase={this.state.translatedPhrase} />
+					{this.state.translations.map((translation, i) => {
+						return (
+							<TranslatorOutput
+								translation={translation}
+								key={i}
+							/>
+						);
+					})}
+					{/* <TranslatorOutput
+						phrase={{
+							phrase: this.state.translatedPhrase,
+							lang: this.state.language
+						}}
+					/> */}
 				</div>
 			</div>
 		);
