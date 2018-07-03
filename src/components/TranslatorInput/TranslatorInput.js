@@ -55,7 +55,7 @@ class TranslatorInput extends Component {
 				>
 					<div className="card-content">
 						<div className="row mb-0">
-							<div className="input-field col s6 m5 l4 xl3">
+							<div className="select-field input-field col s6 m5 l4 xl3">
 								<select
 									value={this.languageFrom}
 									onChange={this.languageFromUpdate}
@@ -72,7 +72,7 @@ class TranslatorInput extends Component {
 									<option value="zh">Chinese</option>
 								</select>
 							</div>
-							<div className="input-field col s6 m5 l4 xl3">
+							<div className="select-field input-field col s6 m5 l4 xl3">
 								<select
 									value={this.languageTo}
 									onChange={this.languageToUpdate}

@@ -24,6 +24,10 @@
 	color: black;
 }
 
+.select-field {
+	min-width: 155px !important;
+}
+
 @media only screen and (max-width: 992px) {
 	.translate-options {
 		float: left !important;
